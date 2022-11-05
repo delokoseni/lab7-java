@@ -112,10 +112,24 @@ public class Jobtitle {
     public void tofile(File file){
         try {
             FileWriter pw = new FileWriter(file, true);
-            pw.write(jtitle + "\t");
-            pw.write(hourlycost + "\t");
+            pw.write(jtitle + "\n");
+            pw.write(hourlycost + "\n");
             pw.close();
             subs.tofile(file);
+        }
+        catch(IOException e){
+            System.out.println("Файл не найден.");
+        }
+    }
+
+    /** Метод записи из файла **/
+    public void getfromfile(File file){
+        try{
+            Scanner sc = new Scanner(file);
+            jtitle = sc.nextLine();
+            hourlycost = Integer.parseInt(sc.nextLine());
+            subs.getfromfile(file);
+            sc.close();
         }
         catch(IOException e){
             System.out.println("Файл не найден.");

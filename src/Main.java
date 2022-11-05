@@ -22,20 +22,18 @@ public class Main {
         Employee[] arr = new Employee[3];
         String jobt3 = "Менеджер по менеджерам";
         Jobtitle a3 = new Jobtitle(jobt3, over, sub3);
-        arr[0] = new Employee(exp3, h3, a3);
+        arr[0] = new Employee();
         arr[1] = new Employee(exp3, h3, a3);
         arr[2] = new Employee(exp3, h3, a3);
         try{
             File file = new File("text.txt");
-            File file1 = new File("text1.txt");
             if(!file.exists())
                 file.createNewFile();
-            if(!file1.exists())
-                file1.createNewFile();
+            emp3.output();
             emp3.tofile(file);
-            sub3.tofile(file1);
-            sub1.getfromfile(file1);
-            sub1.output();
+            arr[0].getfromfile(file);
+            arr[0].output();
+            arr[0].printcounter();
         }
         catch(IOException e){
             System.out.println("...");

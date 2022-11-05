@@ -106,7 +106,7 @@ public class Subordinates {
     public void tofile(File file){
         try {
             FileWriter pw = new FileWriter(file, true);
-            pw.write(amount + "\t");
+            pw.write(amount + "\n");
             pw.write(asos + "\n");
             pw.close();
         }
@@ -119,10 +119,8 @@ public class Subordinates {
     public void getfromfile(File file){
         try{
             Scanner sc = new Scanner(file);
-            sc.useDelimiter("\t");
-            amount = sc.nextInt();
-            sc.nextLine();
-            asos = sc.nextFloat();
+            amount = Integer.parseInt(sc.nextLine());
+            asos = Float.parseFloat(sc.nextLine());
             sc.close();
         }
         catch(IOException e){

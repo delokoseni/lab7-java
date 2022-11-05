@@ -96,10 +96,24 @@ public class Experience {
     public void tofile(File file){
         try {
             FileWriter pw = new FileWriter(file, true);
-            pw.write(workingyears + "\t");
-            pw.write(army + "\t");
-            pw.write(maternityleave + "\t");
+            pw.write(workingyears + "\n");
+            pw.write(army + "\n");
+            pw.write(maternityleave + "\n");
             pw.close();
+        }
+        catch(IOException e){
+            System.out.println("Файл не найден.");
+        }
+    }
+
+    /** Метод записи из файла **/
+    public void getfromfile(File file){
+        try{
+            Scanner sc = new Scanner(file);
+            workingyears = Integer.parseInt(sc.nextLine());
+            army = Integer.parseInt(sc.nextLine());
+            maternityleave = Integer.parseInt(sc.nextLine());
+            sc.close();
         }
         catch(IOException e){
             System.out.println("Файл не найден.");

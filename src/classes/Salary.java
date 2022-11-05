@@ -152,13 +152,30 @@ public class Salary {
     public void tofile(File file){
         try {
             FileWriter pw = new FileWriter(file, true);
-            pw.write(overtimecost + "\t");
-            pw.write(weekendcost + "\t");
-            pw.write(exppercent + "\t");
-            pw.write(subspercent + "\t");
-            pw.write(expstatus + "\t");
+            pw.write(overtimecost + "\n");
+            pw.write(weekendcost + "\n");
+            pw.write(exppercent + "\n");
+            pw.write(subspercent + "\n");
+            pw.write(expstatus + "\n");
             pw.write(subsstatus + "\n");
             pw.close();
+        }
+        catch(IOException e){
+            System.out.println("Файл не найден.");
+        }
+    }
+
+    /** Метод записи из файла **/
+    public void getfromfile(File file){
+        try{
+            Scanner sc = new Scanner(file);
+            overtimecost = Integer.parseInt(sc.nextLine());
+            weekendcost = Integer.parseInt(sc.nextLine());
+            exppercent = Integer.parseInt(sc.nextLine());
+            subspercent = Integer.parseInt(sc.nextLine());
+            expstatus = Boolean.parseBoolean(sc.nextLine());
+            subsstatus = Boolean.parseBoolean(sc.nextLine());
+            sc.close();
         }
         catch(IOException e){
             System.out.println("Файл не найден.");

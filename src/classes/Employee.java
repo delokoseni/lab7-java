@@ -3,6 +3,7 @@ package classes;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
+import java.util.Scanner;
 
 public class Employee {
     /** Счеткич количества сотрудников**/
@@ -104,12 +105,27 @@ public class Employee {
     public void tofile(File file){
         try {
             FileWriter pw = new FileWriter(file, true);
-            pw.write(counter + "\t");
-            pw.write(id + "\t");
+            pw.write(counter + "\n");
+            pw.write(id + "\n");
             pw.close();
             exp.tofile(file);
             hour.tofile(file);
             jt.tofile(file);
+        }
+        catch(IOException e){
+            System.out.println("Файл не найден.");
+        }
+    }
+    /** Метод записи из файла **/
+    public void getfromfile(File file){
+        try{
+            Scanner sc = new Scanner(file);
+            counter = Integer.parseInt(sc.nextLine());
+            id = Integer.parseInt(sc.nextLine());
+            exp.getfromfile(file);
+            //hour.getfromfile(file);
+            //jt.getfromfile(file);
+            sc.close();
         }
         catch(IOException e){
             System.out.println("Файл не найден.");

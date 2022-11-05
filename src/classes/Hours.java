@@ -105,10 +105,24 @@ public class Hours {
     public void tofile(File file){
         try {
             FileWriter pw = new FileWriter(file, true);
-            pw.write(normal + "\t");
-            pw.write(overtime + "\t");
-            pw.write(weekends + "\t");
+            pw.write(normal + "\n");
+            pw.write(overtime + "\n");
+            pw.write(weekends + "\n");
             pw.close();
+        }
+        catch(IOException e){
+            System.out.println("Файл не найден.");
+        }
+    }
+
+    /** Метод записи из файла **/
+    public void getfromfile(File file){
+        try{
+            Scanner sc = new Scanner(file);
+            normal = Integer.parseInt(sc.nextLine());
+            overtime = Integer.parseInt(sc.nextLine());
+            weekends = Integer.parseInt(sc.nextLine());
+            sc.close();
         }
         catch(IOException e){
             System.out.println("Файл не найден.");
