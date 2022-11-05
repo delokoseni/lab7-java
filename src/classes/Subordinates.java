@@ -1,4 +1,7 @@
 package classes;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Subordinates {
@@ -98,5 +101,18 @@ public class Subordinates {
     /** Метод возвращающий количество полчиненных **/
     public int getamount(){
         return amount;
+    }
+
+    /** Метод записи в файл **/
+    public void tofile(File file){
+        try {
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(amount + "\t");
+            pw.print(asos + "\n");
+            pw.close();
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Файл не найден.");
+        }
     }
 }
