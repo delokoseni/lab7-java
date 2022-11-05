@@ -116,16 +116,9 @@ public class Hours {
     }
 
     /** Метод записи из файла **/
-    public void getfromfile(File file){
-        try{
-            Scanner sc = new Scanner(file);
-            normal = Integer.parseInt(sc.nextLine());
-            overtime = Integer.parseInt(sc.nextLine());
-            weekends = Integer.parseInt(sc.nextLine());
-            sc.close();
-        }
-        catch(IOException e){
-            System.out.println("Файл не найден.");
-        }
+    public void getfromfile(File file, Scanner sc){
+        normal = Integer.parseInt(sc.nextLine());
+        overtime = Integer.parseInt(sc.nextLine());
+        weekends = Integer.parseInt(sc.nextLine());
     }
 }

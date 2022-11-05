@@ -117,18 +117,11 @@ public class Employee {
         }
     }
     /** Метод записи из файла **/
-    public void getfromfile(File file){
-        try{
-            Scanner sc = new Scanner(file);
-            counter = Integer.parseInt(sc.nextLine());
-            id = Integer.parseInt(sc.nextLine());
-            exp.getfromfile(file);
-            //hour.getfromfile(file);
-            //jt.getfromfile(file);
-            sc.close();
-        }
-        catch(IOException e){
-            System.out.println("Файл не найден.");
-        }
+    public void getfromfile(File file, Scanner sc){
+        counter = Integer.parseInt(sc.nextLine());
+        id = Integer.parseInt(sc.nextLine());
+        exp.getfromfile(file, sc);
+        hour.getfromfile(file, sc);
+        jt.getfromfile(file, sc);
     }
 }

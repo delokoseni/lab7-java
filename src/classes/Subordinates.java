@@ -116,15 +116,8 @@ public class Subordinates {
     }
 
     /** Метод записи из файла **/
-    public void getfromfile(File file){
-        try{
-            Scanner sc = new Scanner(file);
-            amount = Integer.parseInt(sc.nextLine());
-            asos = Float.parseFloat(sc.nextLine());
-            sc.close();
-        }
-        catch(IOException e){
-            System.out.println("Файл не найден.");
-        }
+    public void getfromfile(File file, Scanner sc){
+        amount = Integer.parseInt(sc.nextLine());
+        asos = Float.parseFloat(sc.nextLine());
     }
 }

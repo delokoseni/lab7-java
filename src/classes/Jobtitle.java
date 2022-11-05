@@ -123,16 +123,9 @@ public class Jobtitle {
     }
 
     /** Метод записи из файла **/
-    public void getfromfile(File file){
-        try{
-            Scanner sc = new Scanner(file);
-            jtitle = sc.nextLine();
-            hourlycost = Integer.parseInt(sc.nextLine());
-            subs.getfromfile(file);
-            sc.close();
-        }
-        catch(IOException e){
-            System.out.println("Файл не найден.");
-        }
+    public void getfromfile(File file, Scanner sc){
+        jtitle = sc.nextLine();
+        hourlycost = Integer.parseInt(sc.nextLine());
+        subs.getfromfile(file, sc);
     }
 }

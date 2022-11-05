@@ -1,6 +1,7 @@
 import classes.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,13 +28,14 @@ public class Main {
         arr[2] = new Employee(exp3, h3, a3);
         try{
             File file = new File("text.txt");
+            Scanner sc = new Scanner(file);
             if(!file.exists())
                 file.createNewFile();
             emp3.output();
             emp3.tofile(file);
-            arr[0].getfromfile(file);
+            arr[0].getfromfile(file, sc);
             arr[0].output();
-            arr[0].printcounter();
+            sc.close();
         }
         catch(IOException e){
             System.out.println("...");

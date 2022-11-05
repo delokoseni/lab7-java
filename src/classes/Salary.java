@@ -166,19 +166,12 @@ public class Salary {
     }
 
     /** Метод записи из файла **/
-    public void getfromfile(File file){
-        try{
-            Scanner sc = new Scanner(file);
-            overtimecost = Integer.parseInt(sc.nextLine());
-            weekendcost = Integer.parseInt(sc.nextLine());
-            exppercent = Integer.parseInt(sc.nextLine());
-            subspercent = Integer.parseInt(sc.nextLine());
-            expstatus = Boolean.parseBoolean(sc.nextLine());
-            subsstatus = Boolean.parseBoolean(sc.nextLine());
-            sc.close();
-        }
-        catch(IOException e){
-            System.out.println("Файл не найден.");
-        }
+    public void getfromfile(File file, Scanner sc){
+        overtimecost = Integer.parseInt(sc.nextLine());
+        weekendcost = Integer.parseInt(sc.nextLine());
+        exppercent = Integer.parseInt(sc.nextLine());
+        subspercent = Integer.parseInt(sc.nextLine());
+        expstatus = Boolean.parseBoolean(sc.nextLine());
+        subsstatus = Boolean.parseBoolean(sc.nextLine());
     }
 }

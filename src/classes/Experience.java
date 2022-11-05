@@ -107,16 +107,9 @@ public class Experience {
     }
 
     /** Метод записи из файла **/
-    public void getfromfile(File file){
-        try{
-            Scanner sc = new Scanner(file);
-            workingyears = Integer.parseInt(sc.nextLine());
-            army = Integer.parseInt(sc.nextLine());
-            maternityleave = Integer.parseInt(sc.nextLine());
-            sc.close();
-        }
-        catch(IOException e){
-            System.out.println("Файл не найден.");
-        }
+    public void getfromfile(File file, Scanner sc){
+        workingyears = Integer.parseInt(sc.nextLine());
+        army = Integer.parseInt(sc.nextLine());
+        maternityleave = Integer.parseInt(sc.nextLine());
     }
 }
