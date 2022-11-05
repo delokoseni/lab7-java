@@ -91,6 +91,7 @@ public class Experience {
         all += maternityleave;
         return all;
     }
+
     /** Метод записи в файл **/
     public void tofile(File file){
         try {

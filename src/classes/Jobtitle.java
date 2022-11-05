@@ -1,4 +1,7 @@
 package classes;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Jobtitle {
@@ -104,5 +107,18 @@ public class Jobtitle {
             sb.append(" ");
         }
         this.jtitle = sb.toString();
+    }
+    /** Метод записи в файл **/
+    public void tofile(File file){
+        try {
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(jtitle + "\t");
+            pw.print(hourlycost + "\t");
+            pw.close();
+            subs.tofile(file);
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Файл не найден.");
+        }
     }
 }
