@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Scanner;
-
 public class Subordinates {
     /** Кол-во подчиненных **/
     private int amount;
@@ -110,6 +109,21 @@ public class Subordinates {
             pw.write(amount + "\t");
             pw.write(asos + "\n");
             pw.close();
+        }
+        catch(IOException e){
+            System.out.println("Файл не найден.");
+        }
+    }
+
+    /** Метод записи из файла **/
+    public void getfromfile(File file){
+        try{
+            Scanner sc = new Scanner(file);
+            sc.useDelimiter("\t");
+            amount = sc.nextInt();
+            sc.nextLine();
+            asos = sc.nextFloat();
+            sc.close();
         }
         catch(IOException e){
             System.out.println("Файл не найден.");

@@ -15,6 +15,7 @@ public class Main {
         int a = 6;
         float b = 1.2f;
         Subordinates sub3 = new Subordinates(a, b);
+        Subordinates sub1 = new Subordinates();
         String str = "Менеджер по продажам";
         Jobtitle jt3 = new Jobtitle(str, over, sub3);
         Employee emp3 = new Employee(exp3, h3, jt3);
@@ -26,9 +27,15 @@ public class Main {
         arr[2] = new Employee(exp3, h3, a3);
         try{
             File file = new File("text.txt");
+            File file1 = new File("text1.txt");
             if(!file.exists())
                 file.createNewFile();
+            if(!file1.exists())
+                file1.createNewFile();
             emp3.tofile(file);
+            sub3.tofile(file1);
+            sub1.getfromfile(file1);
+            sub1.output();
         }
         catch(IOException e){
             System.out.println("...");
