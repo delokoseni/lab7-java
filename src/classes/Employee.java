@@ -1,5 +1,9 @@
 package classes;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class Employee {
     /** Счеткич количества сотрудников**/
     private static int counter = 0;
@@ -94,5 +98,21 @@ public class Employee {
     /** Метод обращения к методу внутреннего класса **/
     public void editjtitle(String jtitle, String add){
         jt.editjtitle(jtitle, add);
+    }
+
+    /** Метод записи в файл **/
+    public void tofile(File file){
+        try {
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(counter + "\t");
+            pw.print(id + "\t");
+            pw.close();
+            exp.tofile(file);
+            hour.tofile(file);
+            jt.tofile(file);
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Файл не найден.");
+        }
     }
 }
