@@ -1,4 +1,7 @@
 package classes;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Experience {
@@ -87,5 +90,18 @@ public class Experience {
         all += army;
         all += maternityleave;
         return all;
+    }
+    /** Метод записи в файл **/
+    public void tofile(File file){
+        try {
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(workingyears + "\t");
+            pw.print(army + "\t");
+            pw.print(maternityleave + "\t");
+            pw.close();
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Файл не найден.");
+        }
     }
 }
