@@ -1,4 +1,7 @@
 package classes;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Salary {
@@ -143,5 +146,22 @@ public class Salary {
         if(subsstatus)
             salary += (float)salary / 100 * subspercent * jt.getamount();
         return salary;
+    }
+
+    /** Метод записи в файл **/
+    public void tofile(File file){
+        try {
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(overtimecost + "\t");
+            pw.print(weekendcost + "\t");
+            pw.print(exppercent + "\t");
+            pw.print(subspercent + "\t");
+            pw.print(expstatus + "\t");
+            pw.print(subsstatus + "\n");
+            pw.close();
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Файл не найден.");
+        }
     }
 }
