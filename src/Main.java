@@ -20,25 +20,36 @@ public class Main {
         String str = "Менеджер по продажам";
         Jobtitle jt3 = new Jobtitle(str, over, sub3);
         Employee emp3 = new Employee(exp3, h3, jt3);
-        Employee[] arr = new Employee[3];
         String jobt3 = "Менеджер по менеджерам";
         Jobtitle a3 = new Jobtitle(jobt3, over, sub3);
-        arr[0] = new Employee();
-        arr[1] = new Employee(exp3, h3, a3);
-        arr[2] = new Employee(exp3, h3, a3);
+        Employee[] arr = new Employee[3];
+        Employee[][] arr1 = new Employee[2][2];
+        int i,j;
         try{
             File file = new File("text.txt");
             Scanner sc = new Scanner(file);
             if(!file.exists())
-                file.createNewFile();
+                throw new IOException();
             emp3.output();
             emp3.tofile(file);
-            arr[0].getfromfile(file, sc);
-            arr[0].output();
+            for(i = 0; i < 3; i++) {
+                System.out.println("arr["+i+"]");
+                arr[i] = new Employee();
+                arr[i].getfromfile(file, sc);
+                arr[i].output();
+            }
+            for(i = 0; i < 2; i++) {
+                for(j = 0; j < 2; j++) {
+                    System.out.println("arr1[" + i + "]"+"["+j+"]");
+                    arr1[i][j] = new Employee();
+                    arr1[i][j].getfromfile(file, sc);
+                    arr1[i][j].output();
+                }
+            }
             sc.close();
         }
         catch(IOException e){
-            System.out.println("...");
+            System.out.println(e);
         }
     }
 }
