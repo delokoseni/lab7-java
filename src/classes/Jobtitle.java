@@ -1,7 +1,7 @@
 package classes;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Jobtitle {
@@ -111,13 +111,13 @@ public class Jobtitle {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
-            PrintWriter pw = new PrintWriter(file);
-            pw.print(jtitle + "\t");
-            pw.print(hourlycost + "\t");
+            FileWriter pw = new FileWriter(file, true);
+            pw.write(jtitle + "\t");
+            pw.write(hourlycost + "\t");
             pw.close();
             subs.tofile(file);
         }
-        catch(FileNotFoundException e){
+        catch(IOException e){
             System.out.println("Файл не найден.");
         }
     }

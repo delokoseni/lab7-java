@@ -1,7 +1,7 @@
 package classes;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Experience {
@@ -95,13 +95,13 @@ public class Experience {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
-            PrintWriter pw = new PrintWriter(file);
-            pw.print(workingyears + "\t");
-            pw.print(army + "\t");
-            pw.print(maternityleave + "\t");
+            FileWriter pw = new FileWriter(file, true);
+            pw.write(workingyears + "\t");
+            pw.write(army + "\t");
+            pw.write(maternityleave + "\t");
             pw.close();
         }
-        catch(FileNotFoundException e){
+        catch(IOException e){
             System.out.println("Файл не найден.");
         }
     }

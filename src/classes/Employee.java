@@ -1,8 +1,8 @@
 package classes;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.FileWriter;
 
 public class Employee {
     /** Счеткич количества сотрудников**/
@@ -103,15 +103,15 @@ public class Employee {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
-            PrintWriter pw = new PrintWriter(file);
-            pw.print(counter + "\t");
-            pw.print(id + "\t");
+            FileWriter pw = new FileWriter(file, true);
+            pw.write(counter + "\t");
+            pw.write(id + "\t");
             pw.close();
             exp.tofile(file);
             hour.tofile(file);
             jt.tofile(file);
         }
-        catch(FileNotFoundException e){
+        catch(IOException e){
             System.out.println("Файл не найден.");
         }
     }

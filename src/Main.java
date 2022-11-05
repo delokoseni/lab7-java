@@ -28,7 +28,7 @@ public class Main {
             File file = new File("text.txt");
             if(!file.exists())
                 file.createNewFile();
-            h3.tofile(file);
+            emp3.tofile(file);
         }
         catch(IOException e){
             System.out.println("...");

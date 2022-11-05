@@ -1,9 +1,8 @@
 package classes;
+import java.io.FileWriter;
 import java.util.Scanner;
 import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileNotFoundException;
-//import java.io.IOException;
+import java.io.IOException;
 
 public class Hours {
     /** Кол-во часов, отработанных по графику **/
@@ -105,13 +104,13 @@ public class Hours {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
-            PrintWriter pw = new PrintWriter(file);
-            pw.print(normal + "\t");
-            pw.print(overtime + "\t");
-            pw.print(weekends + "\t");
+            FileWriter pw = new FileWriter(file, true);
+            pw.write(normal + "\t");
+            pw.write(overtime + "\t");
+            pw.write(weekends + "\t");
             pw.close();
         }
-        catch(FileNotFoundException e){
+        catch(IOException e){
             System.out.println("Файл не найден.");
         }
     }

@@ -1,7 +1,7 @@
 package classes;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Subordinates {
@@ -106,12 +106,12 @@ public class Subordinates {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
-            PrintWriter pw = new PrintWriter(file);
-            pw.print(amount + "\t");
-            pw.print(asos + "\n");
+            FileWriter pw = new FileWriter(file, true);
+            pw.write(amount + "\t");
+            pw.write(asos + "\n");
             pw.close();
         }
-        catch(FileNotFoundException e){
+        catch(IOException e){
             System.out.println("Файл не найден.");
         }
     }
