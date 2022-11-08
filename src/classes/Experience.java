@@ -102,7 +102,7 @@ public class Experience {
             pw.close();
         }
         catch(IOException e){
-            System.out.println("Файл не найден.");
+            System.out.println(e);
         }
     }
 

@@ -118,7 +118,7 @@ public class Jobtitle {
             subs.tofile(file);
         }
         catch(IOException e){
-            System.out.println("Файл не найден.");
+            System.out.println(e);
         }
     }
 

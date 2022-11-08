@@ -104,6 +104,9 @@ public class Employee {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
             FileWriter pw = new FileWriter(file, true);
             pw.write(counter + "\n");
             pw.write(id + "\n");
@@ -112,16 +115,24 @@ public class Employee {
             hour.tofile(file);
             jt.tofile(file);
         }
-        catch(IOException e){
-            System.out.println("Файл не найден.");
+        catch(Exception e){
+            System.out.println(e);
         }
     }
     /** Метод записи из файла **/
-    public void getfromfile(File file, Scanner sc){
-        counter = Integer.parseInt(sc.nextLine());
-        id = Integer.parseInt(sc.nextLine());
-        exp.getfromfile(file, sc);
-        hour.getfromfile(file, sc);
-        jt.getfromfile(file, sc);
+    public void getfromfile(File file, Scanner sc) {
+        try {
+            checkfilename cf = new checkfilename();
+            if (!cf.checkfileextension(file.getName()))
+                throw new Exception("\"Использовано недопустимое расширение файла. Допустимое расширение: \\\".txt\\\".\"");
+            counter = Integer.parseInt(sc.nextLine());
+            id = Integer.parseInt(sc.nextLine());
+            exp.getfromfile(file, sc);
+            hour.getfromfile(file, sc);
+            jt.getfromfile(file, sc);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }
