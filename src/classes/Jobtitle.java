@@ -111,21 +111,32 @@ public class Jobtitle {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
             FileWriter pw = new FileWriter(file, true);
             pw.write(jtitle + "\n");
             pw.write(hourlycost + "\n");
             pw.close();
             subs.tofile(file);
         }
-        catch(IOException e){
+        catch(Exception e){
             System.out.println(e);
         }
     }
 
     /** Метод записи из файла **/
     public void getfromfile(File file, Scanner sc){
-        jtitle = sc.nextLine();
-        hourlycost = Integer.parseInt(sc.nextLine());
-        subs.getfromfile(file, sc);
+        try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
+            jtitle = sc.nextLine();
+            hourlycost = Integer.parseInt(sc.nextLine());
+            subs.getfromfile(file, sc);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

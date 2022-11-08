@@ -95,21 +95,32 @@ public class Experience {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
             FileWriter pw = new FileWriter(file, true);
             pw.write(workingyears + "\n");
             pw.write(army + "\n");
             pw.write(maternityleave + "\n");
             pw.close();
         }
-        catch(IOException e){
+        catch(Exception e){
             System.out.println(e);
         }
     }
 
     /** Метод записи из файла **/
     public void getfromfile(File file, Scanner sc){
-        workingyears = Integer.parseInt(sc.nextLine());
-        army = Integer.parseInt(sc.nextLine());
-        maternityleave = Integer.parseInt(sc.nextLine());
+        try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
+            workingyears = Integer.parseInt(sc.nextLine());
+            army = Integer.parseInt(sc.nextLine());
+            maternityleave = Integer.parseInt(sc.nextLine());
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

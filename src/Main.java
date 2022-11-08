@@ -31,7 +31,7 @@ public class Main {
 
 
         try{
-            File file = new File("text.tx");
+            File file = new File("text.txt");
             for(i = 0; i < 3; i++) {
                 System.out.println("arr["+i+"]");
                 arr[i] = new Employee();

@@ -105,19 +105,30 @@ public class Subordinates {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
             FileWriter pw = new FileWriter(file, true);
             pw.write(amount + "\n");
             pw.write(asos + "\n");
             pw.close();
         }
-        catch(IOException e){
+        catch(Exception e){
             System.out.println(e);
         }
     }
 
     /** Метод записи из файла **/
     public void getfromfile(File file, Scanner sc){
-        amount = Integer.parseInt(sc.nextLine());
-        asos = Float.parseFloat(sc.nextLine());
+        try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
+            amount = Integer.parseInt(sc.nextLine());
+            asos = Float.parseFloat(sc.nextLine());
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

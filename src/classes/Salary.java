@@ -151,6 +151,9 @@ public class Salary {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
             FileWriter pw = new FileWriter(file, true);
             pw.write(overtimecost + "\n");
             pw.write(weekendcost + "\n");
@@ -160,18 +163,26 @@ public class Salary {
             pw.write(subsstatus + "\n");
             pw.close();
         }
-        catch(IOException e){
+        catch(Exception e){
             System.out.println(e);
         }
     }
 
     /** Метод записи из файла **/
     public void getfromfile(File file, Scanner sc){
-        overtimecost = Integer.parseInt(sc.nextLine());
-        weekendcost = Integer.parseInt(sc.nextLine());
-        exppercent = Integer.parseInt(sc.nextLine());
-        subspercent = Integer.parseInt(sc.nextLine());
-        expstatus = Boolean.parseBoolean(sc.nextLine());
-        subsstatus = Boolean.parseBoolean(sc.nextLine());
+        try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
+            overtimecost = Integer.parseInt(sc.nextLine());
+            weekendcost = Integer.parseInt(sc.nextLine());
+            exppercent = Integer.parseInt(sc.nextLine());
+            subspercent = Integer.parseInt(sc.nextLine());
+            expstatus = Boolean.parseBoolean(sc.nextLine());
+            subsstatus = Boolean.parseBoolean(sc.nextLine());
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

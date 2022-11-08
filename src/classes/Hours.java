@@ -104,21 +104,32 @@ public class Hours {
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
             FileWriter pw = new FileWriter(file, true);
             pw.write(normal + "\n");
             pw.write(overtime + "\n");
             pw.write(weekends + "\n");
             pw.close();
         }
-        catch(IOException e){
+        catch(Exception e){
             System.out.println(e);
         }
     }
 
     /** Метод записи из файла **/
     public void getfromfile(File file, Scanner sc){
-        normal = Integer.parseInt(sc.nextLine());
-        overtime = Integer.parseInt(sc.nextLine());
-        weekends = Integer.parseInt(sc.nextLine());
+        try {
+            checkfilename cf= new checkfilename();
+            if(!cf.checkfileextension(file.getName()))
+                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
+            normal = Integer.parseInt(sc.nextLine());
+            overtime = Integer.parseInt(sc.nextLine());
+            weekends = Integer.parseInt(sc.nextLine());
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }
