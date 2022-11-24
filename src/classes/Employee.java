@@ -5,17 +5,17 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-public class Employee {
+public abstract class Employee {
     /** Счеткич количества сотрудников**/
-    private static int counter = 0;
+    protected static int counter = 0;
     /** Индивидуальный номер **/
-    private int  id;
+    protected int  id;
     /** Стаж **/
-    private Experience exp;
+    protected Experience exp;
     /** Отработанные за месяц часы **/
-    private Hours hour;
+    protected Hours hour;
     /** Должность **/
-    private Jobtitle jt;
+    protected Jobtitle jt;
     /** Конструктор класса со всеми параметрами **/
     public Employee(Experience exp, Hours hour, Jobtitle jt) {
         counter++;
@@ -70,7 +70,7 @@ public class Employee {
     public int getsalary(Salary sal){
         int salary = 0;
         salary += hour.hoursmoney(jt, sal);
-        salary = sal.allmoney(salary, exp, jt);
+        salary = sal.allmoney(salary, exp);
         return salary;
     }
 
@@ -102,23 +102,8 @@ public class Employee {
     }
 
     /** Метод записи в файл **/
-    public void tofile(File file){
-        try {
-            checkfilename cf= new checkfilename();
-            if(!cf.checkfileextension(file.getName()))
-                throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
-            FileWriter pw = new FileWriter(file, true);
-            pw.write(counter + "\n");
-            pw.write(id + "\n");
-            pw.close();
-            exp.tofile(file);
-            hour.tofile(file);
-            jt.tofile(file);
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
+    public abstract void tofile(File file);
+
     /** Метод записи из файла **/
     public void getfromfile(File file, Scanner sc) {
         try {

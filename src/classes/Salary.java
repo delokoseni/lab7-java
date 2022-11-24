@@ -140,11 +140,9 @@ public class Salary {
     }
 
     /** Вспомогательный метод при вычислении зарплаты **/
-    public int allmoney(int salary, Experience exp, Jobtitle jt){
+    public int allmoney(int salary, Experience exp){
         if(expstatus)
             salary += (float)salary / 100 * exppercent * exp.allexp();
-        if(subsstatus)
-            salary += (float)salary / 100 * subspercent * jt.getamount();
         return salary;
     }
 

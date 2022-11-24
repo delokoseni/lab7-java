@@ -9,10 +9,9 @@ public class Jobtitle {
     private String jtitle;
     /** Стоимость часа работы **/
     private int hourlycost;
-    /** Подчиненные **/
-    private Subordinates subs;
+
     /** Конструктор со всеми параметрами **/
-    public Jobtitle(String jtitle, int hourlycost, Subordinates subs){
+    public Jobtitle(String jtitle, int hourlycost){
         this.jtitle = jtitle;
         if(hourlycost >= 0)
             this.hourlycost = hourlycost;
@@ -20,7 +19,6 @@ public class Jobtitle {
             System.out.println("Указано недопустимое значение hourlycost.");
             this.hourlycost = 0;
         }
-        this.subs = subs;
     }
 
     /** Конструктор с одним параметром **/
@@ -28,13 +26,11 @@ public class Jobtitle {
         if(allfields >= 0) {
             jtitle = Integer.toString(allfields);
             hourlycost = allfields;
-            subs = new Subordinates(allfields);
         }
         else{
             System.out.println("Указано недопустимое значение allfields.");
             jtitle = "";
             hourlycost = 0;
-            subs = new Subordinates();
         }
     }
 
@@ -42,14 +38,12 @@ public class Jobtitle {
     public Jobtitle(){
         jtitle = "";
         hourlycost = 0;
-        subs = new Subordinates();
     }
 
     /** Метод установки значений **/
     public void set(Jobtitle j){
         this.jtitle = j.jtitle;
         this.hourlycost = j.hourlycost;
-        this.subs.set(j.subs);
     }
 
     /** Метод ввода класса **/
@@ -63,7 +57,7 @@ public class Jobtitle {
         System.out.println("Введите стоимость часа работы: ");
         hourlycost = inp.nextInt();
         subs.input();
-        Jobtitle j = new Jobtitle(jtitle, hourlycost, subs);
+        Jobtitle j = new Jobtitle(jtitle, hourlycost);
         this.set(j);
     }
 
@@ -71,7 +65,6 @@ public class Jobtitle {
     public void output(){
         System.out.println("Должность: " + jtitle);
         System.out.println("Стоимость часа работы: " + hourlycost);
-        subs.output();
     }
 
     /** Метод сравнения **/
@@ -86,11 +79,6 @@ public class Jobtitle {
         int x = 0;
         x += normal * hourlycost;
         return x;
-    }
-
-    /** Метод возвращающий количество подчиненных сотрудника **/
-    public int getamount(){
-        return subs.getamount();
     }
 
     /** Метод для редактирования должности **/
@@ -118,7 +106,6 @@ public class Jobtitle {
             pw.write(jtitle + "\n");
             pw.write(hourlycost + "\n");
             pw.close();
-            subs.tofile(file);
         }
         catch(Exception e){
             System.out.println(e);
@@ -133,7 +120,6 @@ public class Jobtitle {
                 throw new Exception("Использовано недопустимое расширение файла. Допустимое расширение: \".txt\".");
             jtitle = sc.nextLine();
             hourlycost = Integer.parseInt(sc.nextLine());
-            subs.getfromfile(file, sc);
         }
         catch(Exception e){
             System.out.println(e);
