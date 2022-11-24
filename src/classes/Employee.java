@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-public abstract class Employee {
+public abstract class Employee implements GetString{
     /** Счеткич количества сотрудников**/
     protected static int counter = 0;
     /** Индивидуальный номер **/
