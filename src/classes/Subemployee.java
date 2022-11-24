@@ -31,6 +31,20 @@ public class Subemployee extends Employee {
         }
     }
 
+    /**метод вывода Subemployee**/
+    public void output() {
+        super.output();
+        System.out.println("ID Управляющего: " + managerid);
+    }
+
+    /**метод ввода**/
+    public void input(){
+        super.input();
+        System.out.println("Введите ID Управляющего: ");
+        Scanner inp = new Scanner(System.in);
+        managerid = inp.nextInt();
+    }
+
     /**Определение абстрактного метода**/
     @Override
     public void tofile(File file) {
@@ -46,6 +60,16 @@ public class Subemployee extends Employee {
             hour.tofile(file);
             jt.tofile(file);
         } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void getfromfile(File file, Scanner sc) {
+        try {
+            super.getfromfile(file, sc);
+            managerid = Integer.parseInt(sc.nextLine());
+        }
+        catch(Exception e) {
             System.out.println(e);
         }
     }

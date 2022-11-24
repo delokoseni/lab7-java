@@ -146,6 +146,13 @@ public class Salary {
         return salary;
     }
 
+    /**Вспомогательный метод при вычислении зарплаты**/
+    public int allmoney(int salary, Subordinates subs) {
+        if (subsstatus)
+            salary += (float)salary / 100 * subspercent * subs.getamount();
+        return salary;
+    }
+
     /** Метод записи в файл **/
     public void tofile(File file){
         try {
