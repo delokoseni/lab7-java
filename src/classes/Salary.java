@@ -190,4 +190,14 @@ public class Salary {
             System.out.println(e);
         }
     }
+
+    public String toString(){
+        return "overtimecost = " + overtimecost +
+        ", weekendcost = " + weekendcost +
+        ", exppercent = " + exppercent +
+        ", subspercent = " + subspercent +
+        ", expstatus = " + expstatus +
+        ", subsstatus = " + subsstatus;
+    }
+
 }

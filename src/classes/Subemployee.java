@@ -73,4 +73,9 @@ public class Subemployee extends Employee {
             System.out.println(e);
         }
     }
+
+    public String toString(){
+        return super.toString() + "\n" +
+                "managerid = " + managerid;
+    }
 }

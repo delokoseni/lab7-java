@@ -123,4 +123,10 @@ public class Experience {
             System.out.println(e);
         }
     }
+
+    public String toString(){
+        return "workingyears = " + workingyears +
+        ", army = " + army +
+        ", maternityleave = " + maternityleave;
+    }
 }

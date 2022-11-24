@@ -132,4 +132,10 @@ public class Hours {
             System.out.println(e);
         }
     }
+
+    public String toString(){
+        return "normal = " + normal +
+                ", overtime = " + overtime +
+                ", weekends = " + weekends;
+    }
 }

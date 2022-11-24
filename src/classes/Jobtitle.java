@@ -125,4 +125,9 @@ public class Jobtitle {
             System.out.println(e);
         }
     }
+
+    public String toString(){
+        return "jtitle = " + jtitle +
+                ", hourlycost = " + hourlycost;
+    }
 }

@@ -120,4 +120,10 @@ public abstract class Employee {
             System.out.println(e);
         }
     }
+
+    public String toString(){
+        return "counter = " + counter +
+                ", id = " + id + "\n" +
+                exp.toString() + "\n" + hour.toString() + "\n" + jt.toString();
+    }
 }

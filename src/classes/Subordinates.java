@@ -131,4 +131,8 @@ public class Subordinates {
             System.out.println(e);
         }
     }
+
+    public String toString(){
+        return "amount = " + amount + ", asos = " + asos;
+    }
 }

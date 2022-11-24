@@ -38,4 +38,9 @@ public class Managemployee extends Subemployee{
         salary += sal.allmoney(salary, subs);
         return salary;
     }
+
+    public String toString(){
+        return super.toString() + "\n" +
+                subs.toString();
+    }
 }
