@@ -42,28 +42,25 @@ public class Managemployee extends Subemployee{
     public void output() {
         super.output();
         subs.output();
-        System.out.println("Массив ID подчиненных:");
-        for(int i = 0; i < subList.size(); i++){
-            System.out.println(subList.get(i));
+        System.out.println("Массив подчиненных:");
+        for(int i = 0; i < subs.getamount(); i++){
+            System.out.println((subList.get(i)).toString());
         }
     }
 
     /**метод ввода**/
-    /**public void input(){
+    public void input(){
         super.input();
         subs.input();
         Scanner inp = new Scanner(System.in);
-        System.out.println("Введите количество подчиненных: ");
-        int n = inp.nextInt();
-        for(int i = 0; i < n;i++){
-            System.out.println("Введите ID подчиненного: ");
-            n = inp.nextInt();
-            //subList.add(n);
+        for(int i = 0; i < subs.getamount();i++){
+            System.out.println("Введите подчиненного: ");
+            ((Employee)subList.get(i)).input();
         }
     }
-**/
+
     /** Метод подсчета зарплаты **/
-   /** public int getsalary(Salary sal){
+    public int getsalary(Salary sal){
         int salary = super.getsalary(sal);
         salary += sal.allmoney(salary, subs);
         return salary;
@@ -73,5 +70,5 @@ public class Managemployee extends Subemployee{
         return super.toString() + "\n" +
                 subs.toString();
     }
-    **/
+
 }
