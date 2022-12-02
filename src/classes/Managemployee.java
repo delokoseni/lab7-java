@@ -88,4 +88,7 @@ public class Managemployee extends Subemployee{
         subList.sort(new MyComparator());
     }
 
+    public int find(Employee emp){
+        return  subList.indexOf(emp);
+    }
 }

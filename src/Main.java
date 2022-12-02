@@ -23,5 +23,16 @@ public class Main {
         BB.output();
         BB.sort();
         BB.output();
+        int n = BB.find(test);
+        if(n == -1)
+            System.out.println("Элемент не найден.");
+        else
+            System.out.println("Индекс элемента: " + BB.find(test));
+        Subemployee s = new Subemployee();
+        int k = BB.find(s);
+        if(k == -1)
+            System.out.println("Элемент не найден.");
+        else
+            System.out.println("Индекс элемента: " + BB.find(s));
     }
 }
