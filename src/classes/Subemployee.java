@@ -78,4 +78,8 @@ public class Subemployee extends Employee {
         return super.toString() + "\n" +
                 "managerid = " + managerid;
     }
+
+    public int getid(){
+        return id;
+    }
 }

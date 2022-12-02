@@ -12,14 +12,16 @@ public class Main {
         int managerid = 18;
         Subordinates subs = new Subordinates(3);
         Subemployee sub = new Subemployee(1);
+        Subemployee sub1 = new Subemployee(3);
         Vector subList = new Vector(subs.getamount());
-        for(int i = 0; i < 2; i++){
-            subList.add(sub);
-        }
         Managemployee test = new Managemployee(5);
         subList.add(test);
+        subList.add(sub);
+        subList.add(sub1);
         Subemployee AA = new Subemployee(50);
         Managemployee BB = new Managemployee( exp, hour, jt, managerid, subs, subList);
+        BB.output();
+        BB.sort();
         BB.output();
     }
 }

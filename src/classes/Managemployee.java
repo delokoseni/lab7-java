@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Managemployee extends Subemployee{
     private Subordinates subs;
@@ -69,6 +71,21 @@ public class Managemployee extends Subemployee{
     public String toString(){
         return super.toString() + "\n" +
                 subs.toString();
+    }
+    class MyComparator implements Comparator
+    {
+        public int compare(Object obj1, Object obj2)
+        {
+            Subemployee a = (Subemployee) obj1;
+            Subemployee b = (Subemployee) obj2;
+
+            if(a.getid()<b.getid()) return -1;
+            if(a.getid()==b.getid()) return 0;
+            return 1;
+        }
+    }
+    public void sort(){
+        subList.sort(new MyComparator());
     }
 
 }
